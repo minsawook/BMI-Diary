@@ -15,6 +15,9 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   var initialRoute = await Routes.initialRoute;
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -25,9 +28,7 @@ void main() async {
   await Hive.openBox<BmiModel>('bmiModelList');
   await Hive.openBox('unit');
   controllerInit();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+
 
   runApp(Main(initialRoute));
 }

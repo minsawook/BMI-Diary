@@ -12,6 +12,10 @@ dependencies:
 
   intl: ^0.18.1
   firebase_core: ^2.20.0
+  cloud_firestore:
+  firebase_auth: ^4.8.0
+  google_sign_in: ^6.1.5
+
   get: 4.6.6
   equatable: ^2.0.5
   flutter:
