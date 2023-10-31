@@ -56,9 +56,9 @@ class FireBaseDatasource {
   }
 
 
-  void signOut(){
+   Future<void> signOut() async{
     FirebaseAuth authentication = FirebaseAuth.instance;
-    authentication.signOut();
+    await authentication.signOut();
   }
 
   void saveBmiData(List<BmiModel> bmiList, String email){

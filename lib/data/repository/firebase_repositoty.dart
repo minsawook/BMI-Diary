@@ -20,8 +20,8 @@ class FirebaseRepository {
     // }
   }
 
-  void signOut(){
-    firebaseDataSource.signOut();
+   Future<void> signOut() async{
+     await firebaseDataSource.signOut();
   }
 
   bool isLoggedIn(){

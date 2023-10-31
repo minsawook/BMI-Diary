@@ -22,7 +22,7 @@ class BmiModel {
   String time;
 
   @HiveField(3)
-  List<dynamic> diet;
+  List<String> diet;
 
   BmiModel({
     required this.bmi,
@@ -35,13 +35,13 @@ class BmiModel {
     bmi: json["bmi"]?.toDouble(),
     weight: json["weight"]?.toDouble(),
     time: json["time"],
-    diet: List<dynamic>.from(json["diet"].map((x) => x)),
+    diet: List<String>.from(json["diet"].map((x) => x)),
   );
 
   Map<String, dynamic> toJson() => {
     "bmi": bmi,
     "weight": weight,
     "time": time,
-    "diet": List<dynamic>.from(diet.map((x) => x)),
+    "diet": List<String>.from(diet.map((x) => x)),
   };
 }
