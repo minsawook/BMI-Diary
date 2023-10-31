@@ -1,4 +1,5 @@
 import 'package:bmi_calcur/Util/util.dart';
+import 'package:bmi_calcur/data/model/bmi_model.dart';
 import 'package:bmi_calcur/data/repository/hive_repository.dart';
 import 'package:bmi_calcur/presentation/bmi_calculator/controllers/bmi_calculator.controller.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,13 +10,17 @@ class AddLogMealController extends GetxController{
   late TextEditingController textEditingController;
   final bmiCalculContoller = Get.find<BmiCalculatorController>();
   final hiveRepository = HiveRepository();
-  DateTime dateTime = DateTime.now();
+  late DateTime dateTime;
+  late BmiModel bmiModel;
+
 
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
     textEditingController = TextEditingController();
+    bmiModel = Get.arguments['bmiModel'];
+    dietList.value = bmiModel.diet;
   }
   @override
   void onClose() {
@@ -38,8 +43,8 @@ class AddLogMealController extends GetxController{
 
   void saveDietList() async{
     if(dietList.value.isNotEmpty){
-      bmiCalculContoller.bmiModelList.value = await hiveRepository.saveDiet(Util()
-          .getDate(dateTime), dietList.value);
+      bmiCalculContoller.bmiModelList.value = await hiveRepository.saveDiet
+        (bmiModel.time, dietList.value);
 
     }
     Get.back();
