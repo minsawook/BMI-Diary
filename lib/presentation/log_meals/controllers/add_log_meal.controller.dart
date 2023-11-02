@@ -10,8 +10,8 @@ class AddLogMealController extends GetxController{
   late TextEditingController textEditingController;
   final bmiCalculContoller = Get.find<BmiCalculatorController>();
   final hiveRepository = HiveRepository();
-  late DateTime dateTime;
-  late BmiModel bmiModel;
+   Rx<String> dateTime = ''.obs;
+   Rx<BmiModel> bmiModel = BmiModel(bmi: 0, weight: 0, time: '', diet: []).obs;
 
 
   @override
@@ -19,8 +19,9 @@ class AddLogMealController extends GetxController{
     // TODO: implement onInit
     super.onInit();
     textEditingController = TextEditingController();
-    bmiModel = Get.arguments['bmiModel'];
-    dietList.value = bmiModel.diet;
+    bmiModel.value = Get.arguments['bmiModel'];
+    dietList.value = bmiModel.value.diet;
+    dateTime.value = bmiModel.value.time;
   }
   @override
   void onClose() {
@@ -44,9 +45,21 @@ class AddLogMealController extends GetxController{
   void saveDietList() async{
     if(dietList.value.isNotEmpty){
       bmiCalculContoller.bmiModelList.value = await hiveRepository.saveDiet
-        (bmiModel.time, dietList.value);
-
+        (bmiModel.value.time, dietList.value);
     }
     Get.back();
+  }
+
+  void setDateTime(DateTime time){
+    dateTime.value = Util().getDate(time);
+  }
+
+  void changeBmiModel(){
+    bmiModel.value = bmiCalculContoller.bmiModelList.value.firstWhere((element) =>
+    element.time == dateTime.value,
+    orElse: ()=> BmiModel(bmi: 0, weight: 0, time: dateTime.value, diet: []));
+
+    dietList.value = bmiModel.value.diet;
+    print(bmiModel.value.time);
   }
 }
