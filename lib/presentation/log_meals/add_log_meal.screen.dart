@@ -32,6 +32,7 @@ class AddLogMealScreen extends GetView<AddLogMealController>{
                                   maximumDate: DateTime.now(),
                                   mode: CupertinoDatePickerMode.date,
                                   use24hFormat: true,
+
                                   initialDateTime: DateTime.parse(controller
                                       .bmiModel.value.time),
                                   onDateTimeChanged: (time) {

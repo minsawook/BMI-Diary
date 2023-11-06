@@ -26,15 +26,15 @@ class TextView extends StatelessWidget {
     this.isShortMode,
     this.fontWeight
   }) : super(key: key);
-  dynamic? txt = "";
+  dynamic? txt;
   //폰트 사이즈
   double? size=5;
   //글씨 컬러
   Color? color = Colors.black;
   //위젯 넓이
-  double? width = double.infinity;
+  double? width =null;
   //위젯 높이
-  double? height = double.infinity;
+  double? height = null;
   //정렬
   Alignment? align;
   //패딩 값들
@@ -123,10 +123,10 @@ class TextView extends StatelessWidget {
         fontWeight: fontWeight
     );
 
-    return Container(
-      width: (width != double.infinity)?width:double.infinity,
-      height: (height != double.infinity)?height:double.infinity,
-      alignment: align??Alignment.centerLeft,
+    return SizedBox(
+      width: (width != null)?width:null,
+      height: (height != null)?height:null,
+      //alignment: align??Alignment.centerLeft,
       child: Padding(
         padding: EdgeInsets.only(left:pl, top:pt, right:pr, bottom:pb),
         child: (!ignoreClickEvent)?GestureDetector(

@@ -4,15 +4,15 @@ class Languages extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
     'ko_KR': {
-      'calculator': '계산기',
-      'chart' : '통계',
-      'diet_record' : "식단 기록",
+      'calculator': 'BMI 계산기',
+      'graph' : '그래프',
+      'diary' : "식단 다이어리",
       'settings' : '설정'
     },
     'en_US': {
-      'calculator': 'calculator',
-      'chart' : 'chart',
-      'diet_record' : "Diet record",
+      'calculator': 'BMI Calculator',
+      'graph' : 'graph',
+      'diary' : "diet diary",
       'settings' : 'settings'
     },
   };

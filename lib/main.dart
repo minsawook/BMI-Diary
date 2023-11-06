@@ -50,6 +50,9 @@ class Main extends StatelessWidget {
       locale: Get.deviceLocale, //디바이스의 언어를 가져옴
       fallbackLocale: const Locale('es','US'), //현재 언어를 지원 안할 시 기본 언어
       initialRoute: initialRoute,
+      theme: ThemeData(
+        fontFamily: 'NotoSansKR'
+      ),
       getPages: Nav.routes,
     );
   }
