@@ -72,4 +72,19 @@ class FireBaseDatasource {
       bmiCollection.doc(bmiJson['time']).set(bmiJson);
     }
   }
+
+  Future<List<BmiModel>> loadBmiData(String email) async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    var bmiDocs = await firestore.collection('users').doc(email).collection
+      ('bmi').get();
+
+    List<BmiModel> bmiModelList = [];
+    if(bmiDocs.docs.isNotEmpty){
+      for(QueryDocumentSnapshot  doc in bmiDocs.docs){
+        Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+        bmiModelList.add(BmiModel.fromJson(data));
+      }
+    }
+    return bmiModelList;
+  }
 }

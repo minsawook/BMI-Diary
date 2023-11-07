@@ -60,6 +60,5 @@ class AddLogMealController extends GetxController{
     orElse: ()=> BmiModel(bmi: 0, weight: 0, time: dateTime.value, diet: []));
 
     dietList.value = bmiModel.value.diet;
-    print(bmiModel.value.time);
   }
 }

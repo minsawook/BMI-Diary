@@ -86,14 +86,10 @@ class LocalDataSource{
     return postBox.values.toList();
   }
 
-  // List<String> getDietList(List<BmiModel> bmiList){
-  //   List<String> dietList = [];
-  //
-  //   for(var bmiModel in bmiList){
-  //     if(bmiModel.diet.isNotEmpty) dietList.ad
-  //   }
-  //
-  //
-  //   return dietList;
-  // }
+  Future<void> backUpBmiModel(List<BmiModel> bmiModelList) async {
+    var postBox = await Hive.box<BmiModel>('bmiModelList');
+    for(var bmiModel in bmiModelList){
+      postBox.add(bmiModel);
+    }
+  }
   }

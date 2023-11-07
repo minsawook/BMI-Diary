@@ -34,4 +34,9 @@ class HiveRepository {
   Future<List<BmiModel>> saveDiet(String date, List<String> diet) async{
     return await localDataSource.saveDiet(date, diet);
   }
+
+  Future<void> backUpBmiModel(List<BmiModel> bmiModelList) async {
+    localDataSource.clearBmiModel();
+    localDataSource.backUpBmiModel(bmiModelList);
+  }
 }

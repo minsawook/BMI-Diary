@@ -31,4 +31,8 @@ class FirebaseRepository {
   void saveBmiData(List<BmiModel> bmiList, String email){
     firebaseDataSource.saveBmiData(bmiList, email);
   }
+
+  Future<List<BmiModel>> loadBmiData( String email) async {
+    return firebaseDataSource.loadBmiData(email);
+  }
 }

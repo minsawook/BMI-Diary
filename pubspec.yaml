@@ -20,8 +20,7 @@ dependencies:
   equatable: ^2.0.5
   smooth_page_indicator: ^1.1.0
   animated_toggle_switch: ^0.8.0
-  scroll_date_picker: ^3.7.3
-
+  flutter_keyboard_size: ^1.0.1
   flutter:
     sdk: flutter
 
@@ -40,6 +39,8 @@ flutter:
       fonts: 
         - asset: fonts/NotoSansKR-Regular.otf
         - asset: fonts/NotoSansKR-Black.otf
+        - asset: fonts/NotoSansKR-Bold.otf
+          weight: 600
         - asset: fonts/NotoSansKR-Light.otf
         - asset: fonts/NotoSansKR-Medium.otf
         - asset: fonts/NotoSansKR-Thin.otf
