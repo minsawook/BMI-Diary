@@ -117,137 +117,139 @@ class HomeScreen extends GetView<HomeController> {
         ),
 
       ),
-      body:  Column(
-        children: [
-          Container(
-            height:  MediaQuery.of(context).padding.top,
-            color: Common.mainColor,
-          ),
-          //앱바
-           Container(
-             height: 40,
-             color: Common.mainColor,
-             child: Padding(
-              padding: const EdgeInsets.only(top: 10,left: 22,right: 22,bottom:
-              10),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                   TextView(
-                     txt: 'calculator'.tr,
-                     fontWeight: FontWeight.bold,
-                     size: 18,
-                   ),
-                  const Spacer(),
-                  ImageButton(
-                    width: 22,
-                    height: 22,
-                    imagePath: 'icon_menu.png',
-                    click: (){
-                      _scaffoldKey.currentState!.openEndDrawer();
+      body:  Obx(
+        () => Column(
+          children: [
+            Container(
+              height:  MediaQuery.of(context).padding.top,
+              color: controller.index ==1?Common.mainColor : Colors.transparent,
+            ),
+            //앱바
+             Container(
+               height: 40,
+               color: controller.index ==1?Common.mainColor : Colors.transparent,
+               child: Padding(
+                padding: const EdgeInsets.only(top: 10,left: 22,right: 22,bottom:
+                10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                     TextView(
+                       txt: controller.title[controller.index.value],
+                       fontWeight: FontWeight.bold,
+                       size: 18,
+                     ),
+                    const Spacer(),
+                    ImageButton(
+                      width: 22,
+                      height: 22,
+                      imagePath: 'icon_menu.png',
+                      click: (){
+                        _scaffoldKey.currentState!.openEndDrawer();
 
-                    },
-                  )
+                      },
+                    )
+                  ],
+                ),
+            ),
+             ),
+
+            //메인
+            Expanded(
+              child: PageView(
+
+                controller: controller.controller,
+                scrollDirection: Axis.horizontal,
+                onPageChanged: (value) {
+                  controller.index.value = value;
+                },
+                children: const [
+                  BmiHistoryScreen(),
+                  BmiCalculatorScreen(),
+                  LogMealsScreen()
                 ],
               ),
-          ),
-           ),
-
-          //메인
-          Expanded(
-            child: PageView(
-
-              controller: controller.controller,
-              scrollDirection: Axis.horizontal,
-              onPageChanged: (value) {
-                controller.index.value = value;
-              },
-              children: const [
-                BmiHistoryScreen(),
-                BmiCalculatorScreen(),
-                LogMealsScreen()
-              ],
             ),
-          ),
 
 
 
-          //하단
-          Divider(thickness: 2,color: Common.lineColor,),
-           SizedBox(
-            width: double.infinity,
-            height: 54,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 22),
-              child: Stack(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                        onTap: (){
+            //하단
+            Divider(thickness: 2,color: Common.lineColor,),
+             SizedBox(
+              width: double.infinity,
+              height: 54,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 22),
+                child: Stack(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: (){
 
-                        },
-                        child: SizedBox(
-                          height: double.infinity,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              ImageButton(imagePath: 'icon_arrow.png',
-                                width: 15,height: 15,),
-                              const SizedBox(width: 10,),
-                              TextView(
-                                txt: 'graph'.tr,
-                                size: 17,
-                                fontWeight: FontWeight.bold,
-                              )
-                            ],
+                          },
+                          child: SizedBox(
+                            height: double.infinity,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                ImageButton(imagePath: 'icon_arrow.png',
+                                  width: 15,height: 15,),
+                                const SizedBox(width: 10,),
+                                TextView(
+                                  txt: 'graph'.tr,
+                                  size: 17,
+                                  fontWeight: FontWeight.bold,
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-             GestureDetector(
-                   onTap: (){
+               GestureDetector(
+                     onTap: (){
 
-                   },
-                   child: SizedBox(
-                     height: double.infinity,
-                     child: Row(
-                       children: [
-                         TextView(
-                           txt: 'diary'.tr,
-                           size: 17,
-                           fontWeight: FontWeight.bold,
-                         ),
-                         const SizedBox(width: 10,),
-                         Transform.rotate(
-                             angle: 180 * math.pi / 180,
-                             child: ImageButton(imagePath: 'icon_arrow.png',
-                                 width: 15,height: 15)),
-                       ],
+                     },
+                     child: SizedBox(
+                       height: double.infinity,
+                       child: Row(
+                         children: [
+                           TextView(
+                             txt: 'diary'.tr,
+                             size: 17,
+                             fontWeight: FontWeight.bold,
+                           ),
+                           const SizedBox(width: 10,),
+                           Transform.rotate(
+                               angle: 180 * math.pi / 180,
+                               child: ImageButton(imagePath: 'icon_arrow.png',
+                                   width: 15,height: 15)),
+                         ],
+                       ),
                      ),
-                   ),
-             )
-                    ],
-                  ),
-                  Center(
-                    child: SmoothPageIndicator(
-                      controller: controller.controller,
-                      count: 3,
-                      effect:  ExpandingDotsEffect(
-                        dotHeight: 11,
-                        dotWidth: 11,
-                        expansionFactor: 2.3,
-                        dotColor: Common.lineColor,
-                        activeDotColor: Common.mainColor,
+               )
+                      ],
+                    ),
+                    Center(
+                      child: SmoothPageIndicator(
+                        controller: controller.controller,
+                        count: 3,
+                        effect:  ExpandingDotsEffect(
+                          dotHeight: 11,
+                          dotWidth: 11,
+                          expansionFactor: 2.3,
+                          dotColor: Common.lineColor,
+                          activeDotColor: Common.mainColor,
 
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       )
 
     );

@@ -17,10 +17,9 @@ dependencies:
   google_sign_in: ^6.1.5
   gauge_indicator: ^0.4.3
   get: 4.6.6
-  equatable: ^2.0.5
   smooth_page_indicator: ^1.1.0
   animated_toggle_switch: ^0.8.0
-  flutter_keyboard_size: ^1.0.1
+
   flutter:
     sdk: flutter
 

@@ -19,6 +19,7 @@ class HomeController extends GetxController {
   final hiveRepository = HiveRepository();
   Rx<bool> isLogin = false.obs;
 
+  List<String> title = ['히스토리','Bmi 계산', '다이어리'];
   @override
   Future<void> onInit() async {
     super.onInit();

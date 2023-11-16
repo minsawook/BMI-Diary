@@ -27,7 +27,7 @@ void main() async {
   Hive.registerAdapter(BmiModelAdapter());
   await Hive.openBox<BmiModel>('bmiModelList');
   await Hive.openBox('unit');
-  controllerInit();
+  await controllerInit();
 
 
   runApp(Main(initialRoute));

@@ -208,8 +208,8 @@ class BmiCalculatorScreen extends GetView<BmiCalculatorController> {
                                     Padding(
                                       padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 15),
                                       child: Container(
-                                        constraints: const BoxConstraints(
-                                            maxWidth: 400
+                                        constraints:  BoxConstraints(
+                                            maxWidth: Common.maxWidth
                                         ),
                                         child: Column(
                                           children: [

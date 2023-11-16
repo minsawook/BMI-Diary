@@ -64,6 +64,7 @@ class LocalDataSource{
   Future<List<BmiModel>> saveDiet(String date, List<String> diet) async{
     var postBox = await Hive.openBox<BmiModel>('bmiModelList');
 
+    print(date);
     int? existingIndex;
     for (int i = 0; i < postBox.length; i++) {
       if (postBox.getAt(i)!.time == date) {
@@ -71,6 +72,8 @@ class LocalDataSource{
         break;
       }
     }
+
+
 
     BmiModel? bmiModel = BmiModel(bmi: 0, weight: 0, time: date, diet: diet);
     if (existingIndex != null) {
@@ -83,6 +86,7 @@ class LocalDataSource{
       postBox.add(bmiModel);
     }
 
+    print(bmiModel.diet);
     return postBox.values.toList();
   }
 

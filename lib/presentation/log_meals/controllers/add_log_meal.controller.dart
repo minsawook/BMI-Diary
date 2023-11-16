@@ -55,6 +55,7 @@ class AddLogMealController extends GetxController{
   }
 
   void changeBmiModel(){
+
     bmiModel.value = bmiCalculContoller.bmiModelList.value.firstWhere((element) =>
     element.time == dateTime.value,
     orElse: ()=> BmiModel(bmi: 0, weight: 0, time: dateTime.value, diet: []));

@@ -5,4 +5,5 @@ class Common {
   static String imagePath = 'assets/images/';
   static Color lineColor = const Color(0xffeaeaea);
   static Color seletToggleColor = const Color(0xff2F3525);
+  static double maxWidth = 400;
 }
